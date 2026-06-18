@@ -1,0 +1,20 @@
+{{ define "main" }}
+  <section class="hero container">
+    <h1>{{ .Title }}</h1>
+    <p class="subtitle">{{ .Params.subtitle }}</p>
+    <p>{{ .Params.hero_text }}</p>
+  </section>
+
+  <section class="container cards">
+    <article class="card">
+      <h2>Projets récents</h2>
+      <p>Découvrez mes réalisations, technologies et cas d'usage.</p>
+      <a href="/projets/">Voir les projets</a>
+    </article>
+    <article class="card">
+      <h2>À propos</h2>
+      <p>En savoir plus sur mon parcours et mes compétences.</p>
+      <a href="/a-propos/">Voir la page</a>
+    </article>
+  </section>
+{{ end }}

@@ -1,0 +1,15 @@
+{{ define "main" }}
+  <section class="container section">
+    <h1>{{ .Title }}</h1>
+    <p>{{ .Description }}</p>
+    <div class="project-grid">
+      {{ range .Pages }}
+        <article class="project-card">
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <p>{{ .Summary }}</p>
+          <p class="meta">{{ .Date.Format "02 Jan 2006" }} • {{ range $i, $tag := .Params.tags }}{{ if $i }}, {{ end }}{{ $tag }}{{ end }}</p>
+        </article>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

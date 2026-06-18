@@ -1,0 +1,33 @@
+baseURL = "https://example.com/"
+languageCode = "fr-fr"
+title = "Portfolio"
+paginate = 10
+enableGitInfo = false
+
+[params]
+  subtitle = "Développeur Web / Portfolio"
+  description = "Bienvenue sur mon portfolio. Découvrez mes projets, mon expérience et comment me contacter."
+  author = "Ton Nom"
+  email = "ton.email@example.com"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Accueil"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "projets"
+    name = "Projets"
+    url = "/projets/"
+    weight = 2
+  [[menu.main]]
+    identifier = "about"
+    name = "À propos"
+    url = "/a-propos/"
+    weight = 3
+  [[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url = "/contact/"
+    weight = 4
