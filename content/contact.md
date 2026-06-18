@@ -2,8 +2,15 @@
 title: "Contact"
 ---
 
-Pour me contacter :
+Retrouve mes liens professionnels et mon CV. Je suis disponible pour une alternance à Lille, Lens ou Arras.
 
-- Email : ton.email@example.com
-- LinkedIn : [Ton profil](https://www.linkedin.com)
-- GitHub : [Ton GitHub](https://github.com)
+### Mes contacts
+
+- GitHub : [github.com/tonprofil](https://github.com/tonprofil)
+- LinkedIn : [linkedin.com/in/tonprofil](https://www.linkedin.com/in/tonprofil)
+- Email : [contact@example.com](mailto:contact@example.com)
+- CV : [Télécharger le CV](/cv/Tamal_Sen_CV.pdf)
+
+### À propos
+
+Je cherche une alternance en développement informatique. Mes projets montrent mes compétences en Java, JavaFX, front-end web et interfaces animées.

@@ -1,0 +1,18 @@
+{{ define "main" }}
+  <section class="section section-dark">
+    <div class="container">
+      <p class="eyebrow">Work / {{ .Title }}</p>
+      <h1>{{ .Title }}</h1>
+      <p class="meta">Publié le {{ .Date.Format "02 Jan 2006" }}</p>
+      <div class="page-content">
+        {{ .Content }}
+      </div>
+      {{ with .Params.tags }}
+        <div class="tags">
+          {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
+        </div>
+      {{ end }}
+      <a class="button button-secondary" href="/">Retour à l'accueil</a>
+    </div>
+  </section>
+{{ end }}

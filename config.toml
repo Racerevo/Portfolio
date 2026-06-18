@@ -1,14 +1,23 @@
 baseURL = "https://example.com/"
 languageCode = "fr-fr"
-title = "Portfolio"
+title = "Tamal Sen"
 paginate = 10
 enableGitInfo = false
 
 [params]
-  subtitle = "Développeur Web / Portfolio"
-  description = "Bienvenue sur mon portfolio. Découvrez mes projets, mon expérience et comment me contacter."
-  author = "Ton Nom"
-  email = "ton.email@example.com"
+  author = "Tamal Sen"
+  subtitle = "Software Engineer, Front End & App Developer"
+  description = "Portfolio orange multi-page pour mes projets, mon CV et ma recherche d'alternance."
+  email = "contact@example.com"
+  linkedin = "https://www.linkedin.com/in/tonprofil"
+  github = "https://github.com/tonprofil"
+  cv_url = "/cv/Tamal_Sen_CV.pdf"
+  location = "Lens / Lille / Arras"
+  hero_text = "Étudiant en 1ère année de BUT Informatique à Lens, je cherche une alternance en développement à Lille, Lens ou Arras."
+  expertise = ["UI/UX design", "Front-end web", "Java / JavaFX", "Jeux et prototypes", "Applications mobiles"]
+  work_intro = "Mes projets montrent mon travail sur des interfaces, des jeux Java et des expériences web modernes."
+  experience_intro = "Étudiant motivé, prêt à rejoindre une alternance pour mettre en pratique mes compétences techniques."
+  contact_intro = "Retrouve mes liens professionnels et télécharge mon CV ici."
 
 [menu]
   [[menu.main]]
@@ -22,12 +31,7 @@ enableGitInfo = false
     url = "/projets/"
     weight = 2
   [[menu.main]]
-    identifier = "about"
-    name = "À propos"
-    url = "/a-propos/"
-    weight = 3
-  [[menu.main]]
     identifier = "contact"
     name = "Contact"
     url = "/contact/"
-    weight = 4
+    weight = 3
