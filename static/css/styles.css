@@ -175,20 +175,64 @@ nav a:hover {
   min-height: 420px;
 }
 
-.hero-visual-keyboard {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* Keyboard rotation animation */
 .keyboard {
   width: 100%;
-  max-width: 420px;
-  padding: 2rem;
+  max-width: 680px;
+  padding: 2.5rem;
   border-radius: 2rem;
   background: linear-gradient(180deg, rgba(244,114,23,0.18), rgba(33,15,2,0.96));
   border: 1px solid rgba(251,146,60,0.20);
   box-shadow: 0 30px 70px rgba(251,146,60,0.18);
+  transform-origin: 50% 50%;
+  animation: keyboardSpin 4s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes keyboardSpin {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  25% { transform: rotateX(14deg) rotateY(90deg); }
+  50% { transform: rotateX(10deg) rotateY(180deg); }
+  75% { transform: rotateX(12deg) rotateY(270deg); }
+  100% { transform: rotateX(0deg) rotateY(360deg); }
+}
+
+/* Add perspective to the visual container for a horizontal spin */
+.hero-visual-keyboard { perspective: 1400px; }
+
+/* Smooth target animation for about section */
+#a-propos .about-embedded { opacity: 1; transform: translateY(0); }
+#a-propos:target .about-embedded { animation: aboutTarget 620ms cubic-bezier(.2,.9,.3,1) 1 forwards; }
+@keyframes aboutTarget { to { opacity: 1; transform: translateY(0); } }
+
+.hero-visual-keyboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.hero-photo {
+  width: min(320px, 100%);
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  border: 2px dashed rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #f4dcc3;
+  padding: 1.5rem;
+  font-size: 0.95rem;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06), 0 20px 70px rgba(0,0,0,0.24);
+}
+
+.hero-photo span {
+  display: block;
+  max-width: 85%;
+  font-weight: 600;
+  letter-spacing: 0.03em;
 }
 
 .keyboard-row {
@@ -233,10 +277,46 @@ nav a:hover {
   padding-bottom: 6rem;
 }
 
-.cards {
+.section-title {
+  margin: 0 0 2rem;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  color: #fff7eb;
+}
+
+.summary-grid {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: 1fr;
+}
+
+.card-with-photo .card-inner {
+  display: grid;
+  grid-template-columns: 1fr minmax(240px, 280px);
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.card-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 2rem;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+  display: grid;
+  align-items: start;
+  justify-items: center;
+  margin-top: -0.75rem;
+  padding: 0;
+}
+
+.card-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transform: translateY(-12%);
+  display: block;
+  filter: brightness(0.85);
 }
 
 .card {
@@ -305,6 +385,20 @@ nav a:hover {
   transition: transform 350ms ease, box-shadow 350ms ease;
 }
 
+.project-media {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.06);
+}
+
+.project-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .project-card.project-3d:hover .project-card-inner {
   transform: translateY(-8px) rotateX(6deg) rotateY(-6deg);
   box-shadow: 0 45px 105px rgba(0,0,0,0.36);
@@ -352,6 +446,43 @@ nav a:hover {
   flex-wrap: wrap;
   color: #f5dfc3;
   font-size: 0.9rem;
+}
+
+.project-date {
+  font-weight: 700;
+  color: #fff7eb;
+}
+
+.project-used {
+  color: #f4dcc3;
+  font-size: 0.9rem;
+}
+
+/* New header/title styling for project cards */
+.project-header {
+  padding: 1.25rem 1.5rem 0.75rem 1.5rem;
+  text-align: left;
+  background: transparent;
+}
+
+.project-title {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.35rem;
+  line-height: 1.05;
+  color: #fff7eb;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.45);
+}
+
+.project-card-inner {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.project-meta {
+  margin-top: 0.75rem;
+  padding: 0.9rem 1.25rem 1.25rem 1.25rem;
 }
 
 .page-content {
@@ -442,4 +573,26 @@ footer a {
     width: 100%;
     justify-content: center;
   }
+}
+
+/* Page load transitions */
+.site-content {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: contentIn 520ms ease-out 1 forwards;
+}
+
+@keyframes contentIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Special transition for À propos */
+.page-about .site-content {
+  opacity: 0;
+  transform: translateY(18px) scale(0.99);
+  animation: aboutIn 700ms cubic-bezier(.2,.9,.3,1) 1 forwards;
+}
+
+@keyframes aboutIn {
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }

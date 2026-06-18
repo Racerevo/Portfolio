@@ -8,17 +8,23 @@
       </div>
       <div class="project-grid project-grid-3d">
         {{ range .Pages }}
-          <a class="project-card project-3d" href="{{ .Params.git_url }}" target="_blank" rel="noopener noreferrer">
+          {{ $p := . }}
+          <a class="project-card project-3d" href="{{ with $p.Params.git_url }}{{ . }}{{ else }}{{ $p.Permalink }}{{ end }}" target="_blank" rel="noopener noreferrer">
             <div class="project-card-inner">
-              <div class="project-face project-face-front">
-                <h2>{{ .Title }}</h2>
-                <p>{{ .Summary }}</p>
+              <div class="project-header">
+                <h2 class="project-title">{{ $p.Title }}</h2>
               </div>
-              <div class="project-face project-face-top"></div>
+              {{ with $p.Params.image }}
+                <div class="project-media">
+                  <img src="{{ . | relURL }}" alt="{{ $p.Title }}">
+                </div>
+              {{ end }}
             </div>
             <div class="project-meta">
-              <span>{{ .Date.Format "02 Jan 2006" }}</span>
-              <span>{{ range $i, $tag := .Params.tags }}{{ if $i }}, {{ end }}{{ $tag }}{{ end }}</span>
+              <span class="project-date">{{ $p.Date.Format "02 Jan 2006" }}</span>
+              {{ with $p.Params.used }}
+                <span class="project-used">{{ range $i, $tech := . }}{{ if $i }}, {{ end }}{{ $tech }}{{ end }}</span>
+              {{ end }}
             </div>
           </a>
         {{ end }}

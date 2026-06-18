@@ -42,19 +42,29 @@
   </section>
 
   <section class="section section-summary">
-    <div class="container cards">
-      <article class="card card-strong">
-        <h2>Alternance</h2>
-        <p>Recherche d'alternance à Lille, Lens ou Arras (banlieue incluse).</p>
-      </article>
-      <article class="card card-strong">
-        <h2>Projets</h2>
-        <p>Je développe des applications Java, des jeux et des sites web modernes.</p>
-      </article>
-      <article class="card card-strong">
-        <h2>Contact</h2>
-        <p>Retrouve mon GitHub, mon LinkedIn et mon CV sur la page contact.</p>
-      </article>
+    <div class="container">
+      <h2 class="section-title">Ce que je recherche</h2>
+      <div class="summary-grid">
+        <article class="card card-strong card-with-photo">
+          <div class="card-inner">
+            <div class="card-text">
+              <h2>Alternance</h2>
+              <p>Recherche d'alternance à Lille, Lens ou Arras (banlieue incluse).</p>
+            </div>
+            <div class="card-photo">
+              <img class="card-photo-img" src="/images/PhotoProfil.png" alt="Photo de profil">
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
+
+  {{ if .Content }}
+  <section id="a-propos" class="section section-about-home">
+    <div class="container page-content about-embedded">
+      {{ .Content }}
+    </div>
+  </section>
+  {{ end }}
 {{ end }}

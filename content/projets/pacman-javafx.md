@@ -3,6 +3,8 @@ title: "Pac-Man JavaFX"
 date: 2026-06-10
 tags: ["Java", "JavaFX", "Jeu", "IA"]
 git_url: "https://github.com/tonprofil/pacman-javafx"
+image: "/images/pacman-javafx.jpg"
+used: ["Java", "JavaFX", "IA"]
 ---
 
 Développement d'un clone de Pac-Man en Java avec une interface JavaFX et des ennemis pilotés par des comportements simples.

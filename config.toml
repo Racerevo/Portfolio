@@ -1,19 +1,18 @@
 baseURL = "https://example.com/"
 languageCode = "fr-fr"
-title = "Tamal Sen"
+title = "Matty Fourmestraux"
 paginate = 10
 enableGitInfo = false
 
 [params]
-  author = "Tamal Sen"
-  subtitle = "Software Engineer, Front End & App Developer"
+  author = "Matty Fourmestraux"
+  subtitle = "Étudiant en 1ère année de BUT Informatique à Lens, je cherche une alternance en développement à Lille, Lens ou Arras."
   description = "Portfolio orange multi-page pour mes projets, mon CV et ma recherche d'alternance."
-  email = "contact@example.com"
+  email = "Matty.fourmestraux@gmail.com"
   linkedin = "https://www.linkedin.com/in/tonprofil"
   github = "https://github.com/tonprofil"
   cv_url = "/cv/Tamal_Sen_CV.pdf"
   location = "Lens / Lille / Arras"
-  hero_text = "Étudiant en 1ère année de BUT Informatique à Lens, je cherche une alternance en développement à Lille, Lens ou Arras."
   expertise = ["UI/UX design", "Front-end web", "Java / JavaFX", "Jeux et prototypes", "Applications mobiles"]
   work_intro = "Mes projets montrent mon travail sur des interfaces, des jeux Java et des expériences web modernes."
   experience_intro = "Étudiant motivé, prêt à rejoindre une alternance pour mettre en pratique mes compétences techniques."
@@ -34,4 +33,4 @@ enableGitInfo = false
     identifier = "contact"
     name = "Contact"
     url = "/contact/"
-    weight = 3
+    weight = 4
