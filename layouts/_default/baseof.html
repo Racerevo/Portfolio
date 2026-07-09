@@ -6,16 +6,16 @@
   <meta name="theme-color" content="#fb923c">
   <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
   <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
  </head>
  <body>
   <header class="site-header">
     <div class="container header-row">
-      <a class="brand" href="/">PORTFOLIO</a>
+      <a class="brand" href="{{ .Site.Home.RelPermalink }}">PORTFOLIO</a>
       <nav>
         <ul>
           {{ range .Site.Menus.main }}
-            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+            <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
           {{ end }}
         </ul>
       </nav>

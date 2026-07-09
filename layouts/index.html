@@ -7,8 +7,8 @@
         <p class="hero-tag">{{ .Site.Params.subtitle }}</p>
         <p class="hero-text">{{ .Site.Params.hero_text }}</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="/projets/">Mes projets</a>
-          <a class="button button-secondary" href="/contact/">Contact</a>
+          <a class="button button-primary" href="{{ "projets/" | relURL }}">Mes projets</a>
+          <a class="button button-secondary" href="{{ "contact/" | relURL }}">Contact</a>
         </div>
       </div>
       <div class="hero-visual hero-visual-keyboard" aria-hidden="true">
@@ -52,7 +52,7 @@
               <p>Recherche d'alternance à Lille, Lens ou Arras (banlieue incluse).</p>
             </div>
             <div class="card-photo">
-              <img class="card-photo-img" src="/images/PhotoProfil.png" alt="Photo de profil">
+              <img class="card-photo-img" src="{{ "images/PhotoProfil.png" | relURL }}" alt="Photo de profil">
             </div>
           </div>
         </article>

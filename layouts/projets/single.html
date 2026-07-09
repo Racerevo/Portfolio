@@ -12,7 +12,7 @@
           {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
         </div>
       {{ end }}
-      <a class="button button-secondary" href="/">Retour à l'accueil</a>
+      <a class="button button-secondary" href="{{ .Site.Home.RelPermalink }}">Retour à l'accueil</a>
     </div>
   </section>
 {{ end }}
