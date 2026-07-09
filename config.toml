@@ -1,7 +1,8 @@
 baseURL = "https://example.com/"
 languageCode = "fr-fr"
 title = "Matty Fourmestraux"
-paginate = 10
+[pagination]
+  pagerSize = 10
 enableGitInfo = false
 
 [params]
