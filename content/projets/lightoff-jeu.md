@@ -1,14 +1,14 @@
 ---
 title: "LightOff"
-date: 2026-06-08
-tags: ["Jeu", "Puzzle", "Java", "UX"]
-git_url: "https://github.com/tonprofil/lightoff"
-image: "/images/lightoff.jpg"
-used: ["Java", "Puzzle", "UX"]
+date: 2026-03-15
+tags: ["Java", "JavaFX", "Jeu", "Puzzle"]
+git_url: "https://github.com/Racerevo/LightOff"
+used: ["Java", "JavaFX", "Gradle"]
 ---
 
-Jeu inspiré du concept LightOff, avec des niveaux de puzzle et un retour visuel sur chaque action utilisateur.
+Jeu de puzzle en Java/JavaFX où il faut allumer toutes les lumières d'une grille 5x5, réalisé pour un cours d'interfaces graphiques à l'Université d'Artois.
 
-- Système de niveau progressif
-- Interface claire et responsive
-- Effets visuels pour chaque interaction
+- Grille de 25 lumières, chaque clic bascule la case et ses voisines
+- Condition de victoire lorsque toutes les lumières sont allumées
+- Bouton de redémarrage pour relancer une partie
+- Retour visuel clair entre lumières allumées (💡) et éteintes (●)

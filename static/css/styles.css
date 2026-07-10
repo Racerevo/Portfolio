@@ -370,7 +370,24 @@ nav a:hover {
 .project-card.project-3d {
   perspective: 1200px;
   text-decoration: none;
+  opacity: 0;
+  transform: translateY(48px) scale(0.94);
+  transition: opacity 650ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+.project-card.project-3d.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.project-grid-3d .project-3d:nth-child(1) { transition-delay: 0ms; }
+.project-grid-3d .project-3d:nth-child(2) { transition-delay: 90ms; }
+.project-grid-3d .project-3d:nth-child(3) { transition-delay: 180ms; }
+.project-grid-3d .project-3d:nth-child(4) { transition-delay: 270ms; }
+.project-grid-3d .project-3d:nth-child(5) { transition-delay: 360ms; }
+.project-grid-3d .project-3d:nth-child(6) { transition-delay: 450ms; }
+.project-grid-3d .project-3d:nth-child(n+7) { transition-delay: 500ms; }
 
 .project-card-inner {
   position: relative;
@@ -383,6 +400,31 @@ nav a:hover {
   box-shadow: 0 30px 90px rgba(0,0,0,0.28);
   transform-style: preserve-3d;
   transition: transform 350ms ease, box-shadow 350ms ease;
+}
+
+.project-card-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 20%, rgba(255,247,235,0.16) 42%, transparent 60%);
+  transform: translateX(-120%);
+  transition: transform 700ms ease;
+  pointer-events: none;
+}
+
+.project-card.project-3d:hover .project-card-inner::after {
+  transform: translateX(120%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card.project-3d {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .project-card-inner::after {
+    display: none;
+  }
 }
 
 .project-media {

@@ -1,14 +1,14 @@
 ---
-title: "Pac-Man JavaFX"
-date: 2026-06-10
-tags: ["Java", "JavaFX", "Jeu", "IA"]
-git_url: "https://github.com/tonprofil/pacman-javafx"
-image: "/images/pacman-javafx.jpg"
-used: ["Java", "JavaFX", "IA"]
+title: "PacMan"
+date: 2026-04-10
+tags: ["Java", "JavaFX", "Jeu"]
+git_url: "https://github.com/Racerevo/PacMan"
+used: ["Java", "JavaFX", "Gradle"]
 ---
 
-Développement d'un clone de Pac-Man en Java avec une interface JavaFX et des ennemis pilotés par des comportements simples.
+Clone de Pac-Man développé en Java/JavaFX dans le cadre d'un module d'interfaces graphiques.
 
-- Gestion des collisions et déplacements
-- Interface de score et animation des personnages
-- Architecture modulaire pour ajouter de nouveaux niveaux
+- Déplacement du joueur au clavier et carte chargée dynamiquement
+- Tunnels de téléportation et quatre fantômes au comportement aléatoire
+- Système de score à paliers (pac-gommes, super pac-gommes, fruits)
+- Mode "Super Pac-Man" rendant les fantômes vulnérables, système de vies et écrans de victoire/défaite
