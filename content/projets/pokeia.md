@@ -2,6 +2,7 @@
 title: "Pokeia"
 date: 2026-06-15
 tags: ["React", "Jeu", "IA", "Pokémon"]
+image: "https://placehold.co/900x640/210f02/fb923c?text=Pokeia"
 git_url: "https://github.com/Racerevo/Pokeia"
 used: ["React", "Vite", "PokéAPI"]
 ---

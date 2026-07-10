@@ -1,5 +1,5 @@
 {{ define "main" }}
-  <section class="hero hero-home">
+  <section class="hero hero-home" id="accueil" data-dot="Accueil">
     <div class="container hero-grid">
       <div class="hero-copy">
         <span class="eyebrow">Étudiant en informatique</span>
@@ -41,7 +41,7 @@
     </div>
   </section>
 
-  <section class="section section-summary">
+  <section class="section section-summary" id="recherche" data-dot="Ce que je recherche">
     <div class="container">
       <h2 class="section-title">Ce que je recherche</h2>
       <div class="summary-grid">
@@ -61,7 +61,7 @@
   </section>
 
   {{ if .Content }}
-  <section id="a-propos" class="section section-about-home">
+  <section id="a-propos" class="section section-about-home" data-dot="À propos">
     <div class="container page-content about-embedded">
       {{ .Content }}
     </div>

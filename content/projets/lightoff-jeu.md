@@ -2,6 +2,7 @@
 title: "LightOff"
 date: 2026-03-15
 tags: ["Java", "JavaFX", "Jeu", "Puzzle"]
+image: "https://placehold.co/900x640/210f02/fb923c?text=LightOff"
 git_url: "https://github.com/Racerevo/LightOff"
 used: ["Java", "JavaFX", "Gradle"]
 ---

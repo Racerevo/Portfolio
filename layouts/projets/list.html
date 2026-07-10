@@ -1,34 +1,61 @@
 {{ define "main" }}
-  <section class="projects-page">
-    <div class="container">
-      <div class="page-header">
-        <span class="eyebrow">Projets</span>
-        <h1>{{ .Title }}</h1>
-        <p>{{ .Description }}</p>
-      </div>
-      <div class="project-grid project-grid-3d">
-        {{ range .Pages }}
-          {{ $p := . }}
-          <a class="project-card project-3d" href="{{ with $p.Params.git_url }}{{ . }}{{ else }}{{ $p.Permalink }}{{ end }}" target="_blank" rel="noopener noreferrer">
-            <div class="project-card-inner">
-              <div class="project-header">
-                <h2 class="project-title">{{ $p.Title }}</h2>
-              </div>
-              {{ with $p.Params.image }}
-                <div class="project-media">
-                  <img src="{{ . | relURL }}" alt="{{ $p.Title }}">
-                </div>
-              {{ end }}
-            </div>
-            <div class="project-meta">
-              <span class="project-date">{{ $p.Date.Format "02 Jan 2006" }}</span>
-              {{ with $p.Params.used }}
-                <span class="project-used">{{ range $i, $tech := . }}{{ if $i }}, {{ end }}{{ $tech }}{{ end }}</span>
-              {{ end }}
-            </div>
-          </a>
-        {{ end }}
+  {{ $pages := .Pages }}
+  {{ $total := len $pages }}
+  <section class="projects-fullpage">
+
+    <div class="fp-section fp-intro" id="projets-intro" data-dot="Introduction">
+      <div class="container fp-intro-inner">
+        <span class="eyebrow fp-reveal">Projets</span>
+        <h1 class="fp-intro-title fp-reveal" style="--d: 90ms">{{ .Title }}</h1>
+        <p class="fp-intro-text fp-reveal" style="--d: 180ms">{{ .Description }}</p>
+        <a class="fp-scroll-hint fp-reveal" style="--d: 300ms" href="#projet-1">
+          <span>Faire défiler</span>
+          <span class="fp-arrow" aria-hidden="true">↓</span>
+        </a>
       </div>
     </div>
+
+    {{ range $i, $p := $pages }}
+      <article class="fp-section fp-project" id="projet-{{ add $i 1 }}" data-dot="{{ $p.Title }}">
+        <div class="container fp-grid">
+        <div class="fp-content">
+          <p class="eyebrow fp-reveal">Projet {{ printf "%02d" (add $i 1) }} / {{ printf "%02d" $total }} — {{ $p.Date.Format "2006" }}</p>
+          <h2 class="fp-title fp-reveal" style="--d: 90ms">{{ $p.Title }}</h2>
+          {{ with $p.Params.tags }}
+            <ul class="fp-tags fp-reveal" style="--d: 180ms">
+              {{ range . }}<li>{{ . }}</li>{{ end }}
+            </ul>
+          {{ end }}
+          <div class="fp-desc fp-reveal" style="--d: 270ms">{{ $p.Content }}</div>
+          <div class="fp-actions fp-reveal" style="--d: 360ms">
+            {{ with $p.Params.git_url }}
+              <a class="button button-primary" href="{{ . }}" target="_blank" rel="noopener noreferrer">Voir sur GitHub</a>
+            {{ end }}
+            {{ with $p.Params.used }}
+              <span class="fp-used">{{ delimit . " · " }}</span>
+            {{ end }}
+          </div>
+        </div>
+        {{ with $p.Params.image }}
+          <div class="fp-media">
+            <img src="{{ . }}" alt="Aperçu du projet {{ $p.Title }}" loading="lazy">
+          </div>
+        {{ end }}
+        </div>
+        {{ if lt (add $i 1) $total }}
+          {{ $next := index $pages (add $i 1) }}
+          <a class="fp-next" href="#projet-{{ add $i 2 }}">
+            <span class="fp-next-label">Projet suivant</span>
+            <span class="fp-next-title">{{ $next.Title }} <span class="fp-arrow" aria-hidden="true">↓</span></span>
+          </a>
+        {{ else }}
+          <a class="fp-next" href="#projet-1">
+            <span class="fp-next-label">Revenir au début</span>
+            <span class="fp-next-title">{{ (index $pages 0).Title }} <span class="fp-arrow" aria-hidden="true">↑</span></span>
+          </a>
+        {{ end }}
+      </article>
+    {{ end }}
+
   </section>
 {{ end }}
