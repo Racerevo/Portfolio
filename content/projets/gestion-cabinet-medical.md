@@ -2,7 +2,7 @@
 title: "GestionCabinetMedical"
 date: 2026-02-20
 tags: ["Java", "Gestion", "SAE"]
-image: "https://placehold.co/900x640/210f02/fb923c?text=GestionCabinetMedical"
+image: "images/Medecin.png"
 git_url: "https://github.com/Racerevo/GestionCabinetMedical"
 used: ["Java", "POO"]
 ---

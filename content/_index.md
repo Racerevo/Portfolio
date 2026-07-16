@@ -2,17 +2,51 @@
 title: "Accueil"
 subtitle: "Je crée des sites modernes et performants."
 hero_text: "Je suis développeur web spécialisé dans Hugo, HTML, CSS et JavaScript. Voici quelques projets récents et mon parcours."
+recherche:
+  eyebrow: "Alternance"
+  title: "Ce que je"
+  title_accent: "recherche"
+  lead: "Une alternance en informatique à partir de janvier 2027, pour mettre mes compétences en pratique et progresser au sein d'une équipe."
+  points:
+    - icon: "📍"
+      title: "Localisation"
+      text: "Lille, Lens ou Arras — banlieue incluse."
+    - icon: "📅"
+      title: "Début"
+      text: "Janvier 2027, dans le cadre de mon BUT Informatique."
+    - icon: "💻"
+      title: "Missions"
+      text: "Ouvert à tout type de mission en informatique : développement, web, outils internes…"
+    - icon: "🤝"
+      title: "Ce que j'apporte"
+      text: "De la motivation, des projets concrets déjà réalisés (jeux, sites, plateformes) et l'envie d'apprendre en équipe."
+  side:
+    title: "Disponible pour échanger"
+    text: "Une opportunité, une question ? Je réponds rapidement et je suis disponible pour un entretien."
+about:
+  eyebrow: "Qui suis-je ?"
+  title: "À propos"
+  title_accent: "de moi"
+  lead: "Étudiant en BUT Informatique à Lens, passionné par le développement web, les jeux Java et les interfaces modernes."
+  text: "Je cherche une alternance sur Lille, Lens ou Arras (banlieue incluse) pour continuer à apprendre et développer des projets concrets. Ce qui me motive : créer des expériences fluides, performantes et agréables à utiliser."
+  stats:
+    - value: "BUT 1"
+      label: "Informatique à Lens"
+    - value: "6+"
+      label: "projets réalisés"
+    - value: "2027"
+      label: "alternance visée"
+  items:
+    - icon: "🎮"
+      title: "Jeux Java / JavaFX"
+      text: "Pac-Man, LightOff… gameplay, algorithmes et interfaces graphiques."
+    - icon: "🌐"
+      title: "Sites web modernes"
+      text: "Sites d'entreprise éco-responsables, performants et accessibles."
+    - icon: "🤖"
+      title: "IA & prototypes"
+      text: "PokeIA et petits jeux interactifs pour expérimenter de nouvelles idées."
+    - icon: "🔐"
+      title: "Plateformes complètes"
+      text: "Authentification, bases de données et interfaces immersives."
 ---
-
-## À propos
-
-Je suis étudiant en première année de BUT Informatique à Lens, passionné par le développement web, les jeux Java et les interfaces modernes. Je cherche une alternance sur Lille, Lens ou Arras (banlieue incluse) pour continuer à apprendre et à développer des projets concrets.
-
-Je travaille sur :
-
-- des jeux Java/JavaFX comme Pac-Man
-- des prototypes interactifs et des petits jeux comme LightOff
-- des sites web d'entreprise éco-responsables
-- des plateformes avec authentification et interfaces immersives
-
-Je suis motivé par la création d’expériences fluides, performantes et faciles à utiliser pour l’utilisateur.

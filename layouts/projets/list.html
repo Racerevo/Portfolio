@@ -16,7 +16,7 @@
     </div>
 
     {{ range $i, $p := $pages }}
-      <article class="fp-section fp-project" id="projet-{{ add $i 1 }}" data-dot="{{ $p.Title }}">
+      <article class="fp-section fp-project fp-project--{{ $p.File.ContentBaseName }}" id="projet-{{ add $i 1 }}" data-dot="{{ $p.Title }}">
         <div class="container fp-grid">
         <div class="fp-content">
           <p class="eyebrow fp-reveal">Projet {{ printf "%02d" (add $i 1) }} / {{ printf "%02d" $total }} — {{ $p.Date.Format "2006" }}</p>
@@ -38,7 +38,7 @@
         </div>
         {{ with $p.Params.image }}
           <div class="fp-media">
-            <img src="{{ . }}" alt="Aperçu du projet {{ $p.Title }}" loading="lazy">
+            <img src="{{ . | relURL }}" alt="Aperçu du projet {{ $p.Title }}" loading="lazy">
           </div>
         {{ end }}
         </div>

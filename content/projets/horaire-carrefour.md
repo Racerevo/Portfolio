@@ -2,7 +2,7 @@
 title: "HoraireCarrefour"
 date: 2026-07-01
 tags: ["PWA", "Web App", "Supabase", "JavaScript"]
-image: "https://placehold.co/900x640/210f02/fb923c?text=HoraireCarrefour"
+image: "images/Carrefour.png"
 git_url: "https://github.com/Racerevo/horaire-carrefour"
 used: ["JavaScript", "Supabase", "Service Worker"]
 ---

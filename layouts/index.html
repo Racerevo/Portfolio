@@ -41,29 +41,68 @@
     </div>
   </section>
 
-  <section class="section section-summary" id="recherche" data-dot="Ce que je recherche">
-    <div class="container">
-      <h2 class="section-title">Ce que je recherche</h2>
-      <div class="summary-grid">
-        <article class="card card-strong card-with-photo">
-          <div class="card-inner">
-            <div class="card-text">
-              <h2>Alternance</h2>
-              <p>Recherche d'alternance à Lille, Lens ou Arras (banlieue incluse).</p>
+  {{ with .Params.recherche }}
+  <section class="fp-section search-fullpage" id="recherche" data-dot="Ce que je recherche">
+    <div class="container search-grid">
+      <div class="search-copy">
+        <span class="eyebrow fp-reveal">{{ .eyebrow }}</span>
+        <h2 class="about-title fp-reveal" style="--d: 90ms">{{ .title }} <span class="about-accent">{{ .title_accent }}</span></h2>
+        <p class="about-lead fp-reveal" style="--d: 180ms">{{ .lead }}</p>
+        <ul class="search-points">
+          {{ range $i, $pt := .points }}
+          <li class="search-point fp-reveal" style="--d: {{ add 250 (mul $i 110) }}ms">
+            <span class="search-point-icon" aria-hidden="true">{{ $pt.icon }}</span>
+            <div class="search-point-body">
+              <h3>{{ $pt.title }}</h3>
+              <p>{{ $pt.text }}</p>
             </div>
-            <div class="card-photo">
-              <img class="card-photo-img" src="{{ "images/PhotoProfil.png" | relURL }}" alt="Photo de profil">
-            </div>
-          </div>
-        </article>
+          </li>
+          {{ end }}
+        </ul>
       </div>
+      <aside class="search-side fp-reveal" style="--d: 300ms">
+        <div class="search-side-photo">
+          <img src="{{ "images/PhotoProfil.png" | relURL }}" alt="Photo de profil">
+        </div>
+        <div class="search-side-body">
+          <h3>{{ .side.title }}</h3>
+          <p>{{ .side.text }}</p>
+          <a class="button button-primary" href="{{ "contact/" | relURL }}">Me contacter</a>
+        </div>
+      </aside>
     </div>
   </section>
+  {{ end }}
 
-  {{ if .Content }}
-  <section id="a-propos" class="section section-about-home" data-dot="À propos">
-    <div class="container page-content about-embedded">
-      {{ .Content }}
+  {{ with .Params.about }}
+  <section id="a-propos" class="fp-section about-fullpage" data-dot="À propos">
+    <div class="container about-grid">
+      <div class="about-copy">
+        <span class="eyebrow fp-reveal">{{ .eyebrow }}</span>
+        <h2 class="about-title fp-reveal" style="--d: 90ms">{{ .title }} <span class="about-accent">{{ .title_accent }}</span></h2>
+        <p class="about-lead fp-reveal" style="--d: 180ms">{{ .lead }}</p>
+        <p class="about-text fp-reveal" style="--d: 270ms">{{ .text }}</p>
+        {{ with .stats }}
+        <ul class="about-stats fp-reveal" style="--d: 360ms">
+          {{ range . }}
+          <li><strong>{{ .value }}</strong><span>{{ .label }}</span></li>
+          {{ end }}
+        </ul>
+        {{ end }}
+        <div class="about-actions fp-reveal" style="--d: 450ms">
+          <a class="button button-primary" href="{{ "contact/" | relURL }}">Me contacter</a>
+          <a class="button button-secondary" href="{{ "projets/" | relURL }}">Voir mes projets</a>
+        </div>
+      </div>
+      <div class="about-cards">
+        {{ range $i, $item := .items }}
+        <article class="about-card fp-reveal" style="--d: {{ add 200 (mul $i 110) }}ms">
+          <span class="about-card-icon" aria-hidden="true">{{ $item.icon }}</span>
+          <h3>{{ $item.title }}</h3>
+          <p>{{ $item.text }}</p>
+        </article>
+        {{ end }}
+      </div>
     </div>
   </section>
   {{ end }}

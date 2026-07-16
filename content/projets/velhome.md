@@ -2,7 +2,7 @@
 title: "VelHome"
 date: 2026-05-05
 tags: ["Web", "Écologie", "Vitrine"]
-image: "https://placehold.co/900x640/210f02/fb923c?text=VelHome"
+image: "images/VelHome.png"
 git_url: "https://github.com/Racerevo/VelHome"
 used: ["HTML", "CSS"]
 ---

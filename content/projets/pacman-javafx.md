@@ -2,7 +2,7 @@
 title: "PacMan"
 date: 2026-04-10
 tags: ["Java", "JavaFX", "Jeu"]
-image: "https://placehold.co/900x640/210f02/fb923c?text=PacMan"
+image: "images/PacMan.png"
 git_url: "https://github.com/Racerevo/PacMan"
 used: ["Java", "JavaFX", "Gradle"]
 ---
