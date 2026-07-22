@@ -6,7 +6,7 @@ Retrouve mes liens professionnels et mon CV. Je suis disponible pour une alterna
 
 ### Mes contacts
 
-- GitHub : [github.com/tonprofil](https://github.com/tonprofil)
-- LinkedIn : [linkedin.com/in/tonprofil](https://www.linkedin.com/in/tonprofil)
-- Email : [contact@example.com](mailto:contact@example.com)
-- CV : [Télécharger le CV](/cv/Tamal_Sen_CV.pdf)
+- GitHub : [github.com/Racerevo](https://github.com/Racerevo)
+- LinkedIn : [linkedin.com/in/matty-fourmestraux-4b010736a/](https://www.linkedin.com/in/matty-fourmestraux-4b010736a/)
+- Email : matty.fourmestraux@gmail.com
+- CV : [Télécharger le CV](/cv/cv.pdf)
