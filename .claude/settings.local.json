@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/c/Program Files/GitHub CLI/gh.exe auth *)",
+      "Bash(hugo --minify --baseURL \"https://racerevo.github.io/Portfolio/\")",
+      "WebFetch(domain:github.com)",
+      "Bash(hugo --minify)",
+      "Bash(hugo --quiet)",
+      "Skill(run)",
+      "Bash(hugo server *)",
+      "Bash(command -v chromium-cli)",
+      "Bash(npm ls *)",
+      "Read(//c/Program Files \\\\\\(x86\\\\\\)/Microsoft/Edge/Application/**)",
+      "Read(//c/Program Files/Google/Chrome/Application/**)",
+      "Bash(timeout 30 bash -c 'until curl -sf http://127.0.0.1:1414/projets/ >/dev/null; do sleep 1; done')",
+      "Bash(\"/c/Program Files/Google/Chrome/Application/chrome.exe\" --headless=new --disable-gpu --no-sandbox --hide-scrollbars --window-size=1440,900 --virtual-time-budget=8000 --screenshot=\"projet-2.png\" \"http://127.0.0.1:1414/projets/#projet-2\")",
+      "Bash(echo \"exit=$?\")",
+      "Bash('/c/Program Files/Google/Chrome/Application/chrome.exe' --headless=new --disable-gpu --no-sandbox --hide-scrollbars --window-size=1440,900 --virtual-time-budget=8000 '--screenshot=C:\\\\Users\\\\matty\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-matty-OneDrive-Bureau-travail-but-Portfolio\\\\5666da98-19ca-48e9-8139-a6083f31bb44\\\\scratchpad\\\\projet-2.png' 'http://127.0.0.1:1414/projets/#projet-2')",
+      "Bash(npm init *)",
+      "Bash(npm i *)",
+      "Bash(node shoot.js)",
+      "Bash(taskkill //F //IM hugo.exe)",
+      "Bash(timeout 20 bash -c 'until curl -sf http://127.0.0.1:1313/projets/ >/dev/null; do sleep 1; done')",
+      "Bash(curl -s http://127.0.0.1:1313/css/styles.css)",
+      "Bash(netstat -ano)",
+      "PowerShell(Get-NetTCPConnection *)",
+      "Bash(curl -s http://127.0.0.1:1313/projets/)",
+      "Bash(curl -s -I http://127.0.0.1:1313/css/styles.css)",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\"C:\\\\Users\\\\matty\\\\OneDrive\\\\Bureau\\\\travail_but\\\\Portfolio\\\\static\\\\images\\\\Carrefour.png\"\\); \"$\\($img.Width\\) x $\\($img.Height\\)\"; $img.Dispose\\(\\))",
+      "PowerShell(hugo *)"
+    ]
+  }
+}
