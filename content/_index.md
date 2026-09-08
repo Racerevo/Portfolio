@@ -1,7 +1,7 @@
 ---
 title: "Accueil"
-subtitle: "Je crée des sites modernes et performants."
-hero_text: "Je suis développeur web spécialisé dans Hugo, HTML, CSS et JavaScript. Voici quelques projets récents et mon parcours."
+subtitle: "Étudiant en 2ème année de BUT Informatique à Lens, je recherche une alternance en informatique à partir de janvier 2027."
+hero_text: "Je développe en JavaScript, Java et Python, du prototype à l'application déployée. Mon appli de planning tourne chaque semaine dans une vraie équipe."
 recherche:
   eyebrow: "Alternance"
   title: "Ce que je"
@@ -27,8 +27,8 @@ about:
   eyebrow: "Qui suis-je ?"
   title: "À propos"
   title_accent: "de moi"
-  lead: "Étudiant en BUT Informatique à Lens, passionné par le développement web, les jeux Java et les interfaces modernes."
-  text: "Je cherche une alternance sur Lille, Lens ou Arras (banlieue incluse) pour continuer à apprendre et développer des projets concrets. Ce qui me motive : créer des expériences fluides, performantes et agréables à utiliser."
+  lead: "Étudiant en 2ème année de BUT Informatique à Lens, passionné par le développement web, l'intelligence artificielle et les applications qui servent vraiment."
+  text: "Je recherche une alternance à partir de janvier 2027 sur Lille, Lens ou Arras (banlieue incluse). En parallèle de mes études, je travaille chez Carrefour comme hôte de caisse — c'est de là qu'est née mon appli de planning, utilisée aujourd'hui par toute l'équipe."
   stats:
     - value: "BUT 2"
       label: "Informatique à Lens"

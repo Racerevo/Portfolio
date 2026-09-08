@@ -158,6 +158,116 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // ---------------------------------------------------------------------
+  // Page Contact : panneau de rédaction déroulant + envoi
+  // ---------------------------------------------------------------------
+  var contactToggle = document.querySelector("[data-contact-toggle]");
+  var contactPanel = document.getElementById("contact-form-panel");
+  var contactForm = document.querySelector("[data-contact-form]");
+
+  if (contactToggle && contactPanel) {
+    contactToggle.addEventListener("click", function () {
+      var open = contactPanel.classList.toggle("is-open");
+      contactToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) {
+        window.setTimeout(function () {
+          var first = contactPanel.querySelector("input[name=name]");
+          if (first) first.focus({ preventScroll: true });
+          contactPanel.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "nearest" });
+        }, 380);
+      }
+    });
+  }
+
+  if (contactForm) {
+    var feedback = contactForm.querySelector(".contact-feedback");
+    var submitBtn = contactForm.querySelector(".contact-submit");
+
+    var say = function (text, state) {
+      if (!feedback) return;
+      feedback.textContent = text;
+      feedback.classList.remove("is-success", "is-error");
+      if (state) feedback.classList.add(state);
+    };
+
+    // Validation maison : on garde la main sur les messages, en français.
+    var checkFields = function () {
+      var missing = null;
+      contactForm.querySelectorAll("[required]").forEach(function (el) {
+        var bad = !el.value.trim() || (el.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value));
+        el.classList.toggle("is-invalid", bad);
+        if (bad && !missing) missing = el;
+      });
+      return missing;
+    };
+
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var missing = checkFields();
+      if (missing) {
+        say("Merci de compléter les champs en rouge.", "is-error");
+        missing.focus();
+        return;
+      }
+
+      var data = new FormData(contactForm);
+      var accessKey = contactForm.getAttribute("data-key") || "";
+
+      // Sans clé d'accès : on retombe sur la messagerie du visiteur.
+      if (!accessKey) {
+        var to = contactForm.getAttribute("data-mailto") || "";
+        var corps =
+          data.get("message") +
+          "\n\n—\n" + data.get("name") +
+          (data.get("company") ? " — " + data.get("company") : "") +
+          "\n" + data.get("email");
+        say("Ouverture de votre messagerie…");
+        window.location.href =
+          "mailto:" + to +
+          "?subject=" + encodeURIComponent(data.get("subject")) +
+          "&body=" + encodeURIComponent(corps);
+        return;
+      }
+
+      // Avec clé : envoi direct, sans quitter la page.
+      data.set("access_key", accessKey);
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = contactForm.getAttribute("data-sending") || "Envoi…";
+      }
+      say("");
+
+      fetch(contactForm.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data
+      })
+        .then(function (r) { return r.json().catch(function () { return { success: r.ok }; }); })
+        .then(function (res) {
+          if (res && res.success) {
+            contactForm.reset();
+            say(contactForm.getAttribute("data-success") || "Message envoyé.", "is-success");
+          } else {
+            say(contactForm.getAttribute("data-error") || "L'envoi a échoué.", "is-error");
+          }
+        })
+        .catch(function () {
+          say(contactForm.getAttribute("data-error") || "L'envoi a échoué.", "is-error");
+        })
+        .then(function () {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = contactForm.getAttribute("data-submit") || "Envoyer";
+          }
+        });
+    });
+
+    contactForm.addEventListener("input", function (e) {
+      if (e.target.classList.contains("is-invalid")) e.target.classList.remove("is-invalid");
+    });
+  }
+
   var cards = document.querySelectorAll(".project-3d");
   if (!cards.length) return;
 

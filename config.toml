@@ -7,17 +7,17 @@ enableGitInfo = false
 
 [params]
   author = "Matty Fourmestraux"
-  subtitle = "Étudiant en 1ère année de BUT Informatique à Lens, je cherche une alternance en développement à Lille, Lens ou Arras."
+  subtitle = "Étudiant en 2ème année de BUT Informatique à Lens, je recherche une alternance en informatique à partir de janvier 2027."
   description = "Portfolio orange multi-page pour mes projets, mon CV et ma recherche d'alternance."
-  email = "Matty.fourmestraux@gmail.com"
-  linkedin = "https://www.linkedin.com/in/tonprofil"
-  github = "https://github.com/tonprofil"
-  cv_url = "/cv/Tamal_Sen_CV.pdf"
-  location = "Lens / Lille / Arras"
-  expertise = ["UI/UX design", "Front-end web", "Java / JavaFX", "Jeux et prototypes", "Applications mobiles"]
-  work_intro = "Mes projets montrent mon travail sur des interfaces, des jeux Java et des expériences web modernes."
-  experience_intro = "Étudiant motivé, prêt à rejoindre une alternance pour mettre en pratique mes compétences techniques."
-  contact_intro = "Retrouve mes liens professionnels et télécharge mon CV ici."
+  email = "matty.fourmestraux@gmail.com"
+  linkedin = "https://www.linkedin.com/in/matty-fourmestraux-4b010736a/"
+  github = "https://github.com/Racerevo"
+  cv_url = "cv/cv.pdf"
+  location = "Annœullin — mobile sur Lille, Lens et Arras"
+  expertise = ["Développement web", "Java / JavaFX", "Bases de données", "Applications déployées", "IA appliquée"]
+  work_intro = "Mes projets vont de l'application utilisée chaque semaine par une vraie équipe aux jeux Java et aux prototypes IA."
+  experience_intro = "En 2ème année de BUT Informatique, prêt à rejoindre une alternance en janvier 2027 pour mettre mes compétences en pratique."
+  contact_intro = "Retrouvez mes coordonnées, mes liens professionnels et mon CV."
 
 [menu]
   [[menu.main]]

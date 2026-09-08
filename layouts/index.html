@@ -4,8 +4,8 @@
       <div class="hero-copy">
         <span class="eyebrow">Étudiant en informatique</span>
         <h1>{{ .Site.Title }}</h1>
-        <p class="hero-tag">{{ .Site.Params.subtitle }}</p>
-        <p class="hero-text">{{ .Site.Params.hero_text }}</p>
+        <p class="hero-tag">{{ .Params.subtitle | default .Site.Params.subtitle }}</p>
+        <p class="hero-text">{{ .Params.hero_text | default .Site.Params.hero_text }}</p>
         <div class="hero-actions">
           <a class="button button-primary" href="{{ "projets/" | relURL }}">Mes projets</a>
           <a class="button button-secondary" href="{{ "contact/" | relURL }}">Contact</a>

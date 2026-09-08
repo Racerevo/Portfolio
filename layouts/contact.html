@@ -1,0 +1,136 @@
+{{ define "main" }}
+  {{ $f := .Params.form }}
+  <section class="contact-page">
+    <div class="container">
+
+      <div class="contact-intro">
+        <span class="eyebrow sk-reveal">{{ .Params.eyebrow | default "Contact" }}</span>
+        <h1 class="skills-title sk-reveal" style="--d: 80ms">
+          {{ .Params.heading | default "Discutons de votre" }} <span class="about-accent">{{ .Params.title_accent | default "alternance" }}</span>
+        </h1>
+        <p class="skills-lead sk-reveal" style="--d: 160ms">{{ .Params.lead }}</p>
+        {{ with .Params.status }}
+          <p class="contact-status sk-reveal" style="--d: 240ms">
+            <span class="contact-dot" aria-hidden="true"></span>{{ . }}
+          </p>
+        {{ end }}
+      </div>
+
+      <div class="contact-grid">
+        {{ range $i, $c := .Params.channels }}
+          {{ if $c.form }}
+            <button type="button"
+                    class="contact-tile contact-tile--form sk-reveal"
+                    style="--d: {{ add 120 (mul $i 80) }}ms"
+                    data-contact-toggle
+                    aria-expanded="false"
+                    aria-controls="contact-form-panel">
+              <span class="contact-tile-icon" aria-hidden="true">{{ $c.icon }}</span>
+              <span class="contact-tile-label">{{ $c.label }}</span>
+              <span class="contact-tile-value">{{ $c.value }}</span>
+              <span class="contact-tile-go">{{ $c.action }}<span class="contact-arrow contact-arrow--down" aria-hidden="true">↓</span></span>
+            </button>
+          {{ else }}
+            <a class="contact-tile sk-reveal"
+               href="{{ $c.href | safeURL }}"
+               style="--d: {{ add 120 (mul $i 80) }}ms"
+               {{ if $c.external }}target="_blank" rel="noopener noreferrer"{{ end }}>
+              <span class="contact-tile-icon" aria-hidden="true">{{ $c.icon }}</span>
+              <span class="contact-tile-label">{{ $c.label }}</span>
+              <span class="contact-tile-value">{{ $c.value }}</span>
+              <span class="contact-tile-go">{{ $c.action }}<span class="contact-arrow" aria-hidden="true">→</span></span>
+            </a>
+          {{ end }}
+        {{ end }}
+      </div>
+
+      {{ with $f }}
+        <div class="contact-form-wrap" id="contact-form-panel">
+          <div class="contact-form-inner">
+            <form class="contact-form"
+                  data-contact-form
+                  data-mailto="{{ $.Site.Params.email }}"
+                  data-key="{{ .access_key }}"
+                  data-sending="{{ .sending }}"
+                  data-submit="{{ .submit }}"
+                  data-success="{{ .success }}"
+                  data-error="{{ .error }}"
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                  novalidate>
+
+              <div class="contact-form-head">
+                <h2>{{ .title }}</h2>
+                <p>
+                  {{ .text }}
+                  {{ if not .access_key }}<span class="contact-form-note">{{ .fallback_note }}</span>{{ end }}
+                </p>
+              </div>
+
+              <input type="hidden" name="access_key" value="{{ .access_key }}">
+              <input type="hidden" name="from_name" value="Portfolio — {{ $.Site.Title }}">
+              <input type="checkbox" name="botcheck" class="contact-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+              <div class="contact-form-row">
+                <label class="contact-field">
+                  <span>{{ .labels.name }}</span>
+                  <input type="text" name="name" required autocomplete="name" placeholder="{{ .placeholders.name }}">
+                </label>
+                <label class="contact-field">
+                  <span>{{ .labels.email }}</span>
+                  <input type="email" name="email" required autocomplete="email" placeholder="{{ .placeholders.email }}">
+                </label>
+              </div>
+
+              <div class="contact-form-row">
+                <label class="contact-field">
+                  <span>{{ .labels.company }}</span>
+                  <input type="text" name="company" autocomplete="organization" placeholder="{{ .placeholders.company }}">
+                </label>
+                <label class="contact-field">
+                  <span>{{ .labels.subject }}</span>
+                  <input type="text" name="subject" required value="{{ .subject_default }}">
+                </label>
+              </div>
+
+              <label class="contact-field">
+                <span>{{ .labels.message }}</span>
+                <textarea name="message" rows="6" required placeholder="{{ .placeholders.message }}"></textarea>
+              </label>
+
+              <div class="contact-form-actions">
+                <button type="submit" class="button button-primary contact-submit">{{ .submit }}</button>
+                <p class="contact-feedback" role="status" aria-live="polite"></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      {{ end }}
+
+      <div class="contact-bottom">
+
+        {{ with .Params.cv }}
+          <div class="contact-cv sk-reveal" style="--d: 120ms">
+            <span class="contact-cv-icon" aria-hidden="true">📄</span>
+            <h2>{{ .title }}</h2>
+            <p>{{ .text }}</p>
+            <a class="button button-primary" href="{{ .file | relURL }}" download>{{ .button }}</a>
+          </div>
+        {{ end }}
+
+        {{ with .Params.facts }}
+          <dl class="contact-facts sk-reveal" style="--d: 200ms">
+            {{ range . }}
+              <div class="contact-fact">
+                <dt>{{ .label }}</dt>
+                <dd>{{ .value }}</dd>
+              </div>
+            {{ end }}
+          </dl>
+        {{ end }}
+
+      </div>
+
+    </div>
+  </section>
+{{ end }}
