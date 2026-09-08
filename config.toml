@@ -31,6 +31,11 @@ enableGitInfo = false
     url = "/projets/"
     weight = 2
   [[menu.main]]
+    identifier = "competences"
+    name = "Compétences"
+    url = "/competences/"
+    weight = 3
+  [[menu.main]]
     identifier = "contact"
     name = "Contact"
     url = "/contact/"

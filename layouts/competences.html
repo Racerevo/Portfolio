@@ -1,0 +1,83 @@
+{{ define "main" }}
+  {{ $sections := .Params.sections }}
+  {{ $total := len $sections }}
+  <section class="skills-fullpage">
+
+    {{ range $si, $sec := $sections }}
+      <div class="sk-section" id="{{ $sec.id }}" data-dot="{{ $sec.dot }}">
+        <div class="container sk-section-inner">
+
+          {{ if eq $si 0 }}
+            <div class="skills-intro">
+              <span class="eyebrow sk-reveal">{{ $.Params.eyebrow | default "Compétences" }}</span>
+              <h1 class="skills-title sk-reveal" style="--d: 90ms">
+                Mes <span class="about-accent">{{ $.Params.title_accent | default "compétences" }}</span>
+              </h1>
+              <p class="skills-lead sk-reveal" style="--d: 180ms">{{ $.Params.lead }}</p>
+            </div>
+          {{ end }}
+
+          <div class="skills-grid" style="--cols: {{ $sec.columns | default 3 }}">
+            {{ range $i, $g := $sec.groups }}
+              <article class="skill-card sk-reveal{{ if eq $g.style "soft" }} skill-card--soft{{ end }}" style="--d: {{ add 120 (mul $i 90) }}ms">
+                <header class="skill-card-head">
+                  <span class="skill-card-icon" aria-hidden="true">{{ $g.icon }}</span>
+                  <div class="skill-card-heading">
+                    <h2>
+                      {{ $g.title }}
+                      {{ with $g.badge }}<span class="skill-badge">{{ . }}</span>{{ end }}
+                    </h2>
+                    {{ with $g.text }}<p>{{ . }}</p>{{ end }}
+                  </div>
+                </header>
+
+                <ul class="skill-chips">
+                  {{ range $g.skills }}
+                    {{ $s := . }}
+                    <li class="skill-chip">
+                      <span class="skill-chip-icon" aria-hidden="true">
+                        {{ if or $s.logo $s.logo_url }}
+                          {{ $src := $s.logo_url }}
+                          {{ if $s.logo }}{{ $src = printf "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/%s.svg" $s.logo }}{{ end }}
+                          <img src="{{ $src }}"
+                               alt="" width="30" height="30" loading="lazy"
+                               data-fallback="{{ substr $s.name 0 1 }}">
+                        {{ else }}
+                          <span class="skill-chip-emoji">{{ with $s.emoji }}{{ . }}{{ else }}{{ substr $s.name 0 1 }}{{ end }}</span>
+                        {{ end }}
+                      </span>
+                      <span class="skill-chip-name">{{ $s.name }}</span>
+                    </li>
+                  {{ end }}
+                </ul>
+              </article>
+            {{ end }}
+          </div>
+
+          {{ with $sec.cta }}
+            <div class="skills-cta sk-reveal">
+              <h2>{{ .title }}</h2>
+              <p>{{ .text }}</p>
+              <div class="skills-cta-actions">
+                <a class="button button-primary" href="{{ "projets/" | relURL }}">Voir mes projets</a>
+                <a class="button button-secondary" href="{{ "contact/" | relURL }}">Me contacter</a>
+              </div>
+            </div>
+          {{ end }}
+
+          {{ if lt (add $si 1) $total }}
+            {{ $next := index $sections (add $si 1) }}
+            <div class="sk-scroll-wrap">
+              <a class="fp-scroll-hint" href="#{{ $next.id }}">
+                <span>{{ $next.dot }}</span>
+                <span class="fp-arrow" aria-hidden="true">↓</span>
+              </a>
+            </div>
+          {{ end }}
+
+        </div>
+      </div>
+    {{ end }}
+
+  </section>
+{{ end }}

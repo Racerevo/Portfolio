@@ -10,7 +10,7 @@ recherche:
   points:
     - icon: "📍"
       title: "Localisation"
-      text: "Lille, Lens ou Arras — banlieue incluse."
+      text: "Lille, Lens, Arras ou Wissant — banlieue incluse."
     - icon: "📅"
       title: "Début"
       text: "Janvier 2027, dans le cadre de mon BUT Informatique."
@@ -30,7 +30,7 @@ about:
   lead: "Étudiant en BUT Informatique à Lens, passionné par le développement web, les jeux Java et les interfaces modernes."
   text: "Je cherche une alternance sur Lille, Lens ou Arras (banlieue incluse) pour continuer à apprendre et développer des projets concrets. Ce qui me motive : créer des expériences fluides, performantes et agréables à utiliser."
   stats:
-    - value: "BUT 1"
+    - value: "BUT 2"
       label: "Informatique à Lens"
     - value: "6+"
       label: "projets réalisés"

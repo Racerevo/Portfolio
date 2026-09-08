@@ -15,8 +15,10 @@
       <a class="brand" href="{{ .Site.Home.RelPermalink }}">PORTFOLIO</a>
       <nav>
         <ul>
+          {{ $current := .RelPermalink }}
           {{ range .Site.Menus.main }}
-            <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+            {{ $url := .URL | relURL }}
+            <li><a href="{{ $url }}"{{ if eq $current $url }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
           {{ end }}
         </ul>
       </nav>
