@@ -60,6 +60,7 @@ temoignages:
       author: "Isabelle Javaudin"
       role: "Manager d'équipe — Animation de la Performance Commerciale, Macif Santé Prévoyance"
       quote: "Le résultat est tout simplement remarquable. En très peu de temps, il a su transformer notre concept en une expérience digitale fluide, intuitive et particulièrement agréable à utiliser. […] J'ai particulièrement apprécié sa réactivité, sa rapidité d'exécution et sa capacité à comprendre rapidement notre besoin. […] Nous sommes unanimement très satisfaits du travail réalisé."
+      points: ["🃏 9 piles de cartes", "👥 Jeu en équipe", "📋 Récapitulatif final", "🏆 Concours Étoiles CX"]
       project: "Atouts Vente"
       project_text: "Jeu de formation commerciale digitalisé, présenté au concours interne Étoiles CX."
       image: "images/AtoutsVente.jpg"
