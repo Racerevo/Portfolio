@@ -10,10 +10,16 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{{ "img/favicon-32x32.png" | relURL }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ "img/favicon-16x16.png" | relURL }}">
   <link rel="apple-touch-icon" href="{{ "img/apple-touch-icon.png" | relURL }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
   <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}?v={{ now.Unix }}">
+  <link rel="stylesheet" href="{{ "css/fx.css" | relURL }}?v={{ now.Unix }}">
   <script src="{{ "js/main.js" | relURL }}?v={{ now.Unix }}" defer></script>
+  <script src="{{ "js/fx.js" | relURL }}?v={{ now.Unix }}" defer></script>
+  <script src="{{ "js/arcade.js" | relURL }}?v={{ now.Unix }}" defer></script>
  </head>
- <body>
+ <body data-contact="{{ "contact/" | relURL }}">
   <header class="site-header">
     <div class="container header-row">
       <a class="brand" href="{{ .Site.Home.RelPermalink }}">PORTFOLIO</a>
@@ -36,6 +42,7 @@
   <footer class="site-footer">
     <div class="container footer-row">
       <p>&copy; {{ now.Format "2006" }} {{ .Site.Params.author }}</p>
+      <p class="footer-konami" title="Un code secret à taper au clavier…" aria-hidden="true">↑ ↑ ↓ ↓ ← → ← → B A</p>
       <p><a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a></p>
     </div>
   </footer>

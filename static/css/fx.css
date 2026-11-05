@@ -1,0 +1,1015 @@
+/* =========================================================
+   Animations du site + mini-jeu arcade
+   ========================================================= */
+
+/* ----- Transitions entre pages ----- */
+.site-content {
+  animation: fxPageIn 600ms var(--ease) both;
+}
+
+body.is-leaving .site-content,
+body.is-leaving .site-footer {
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+@keyframes fxPageIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ----- Halo qui suit la souris ----- */
+.fx-cursor-glow {
+  position: fixed;
+  left: -220px;
+  top: -220px;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle, rgba(251,146,60,0.11) 0%, rgba(251,146,60,0.04) 38%, transparent 66%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 400ms ease;
+  will-change: transform;
+}
+
+.fx-cursor-glow.is-on {
+  opacity: 1;
+}
+
+/* ----- Hero : lettres du nom ----- */
+.hero h1 .fx-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.hero h1 .fx-char {
+  display: inline-block;
+  animation: fxCharIn 750ms var(--ease) backwards;
+  animation-delay: calc(var(--i) * 45ms + 250ms);
+}
+
+@keyframes fxCharIn {
+  from { opacity: 0; transform: translateY(0.7em) rotate(12deg); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ----- Hero : sur-titre tapé au clavier ----- */
+.fx-caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 0.2em;
+  vertical-align: -0.18em;
+  background: var(--accent-soft);
+  box-shadow: 0 0 10px rgba(251,146,60,0.6);
+  animation: fxBlink 1s steps(1) infinite;
+}
+
+@keyframes fxBlink {
+  50% { opacity: 0; }
+}
+
+/* ----- Hero : touches qui s'enfoncent ----- */
+.key {
+  cursor: pointer;
+}
+
+.key.is-pressed {
+  transform: translateY(3px) scale(0.95);
+  background: linear-gradient(180deg, rgba(252,211,77,0.78), rgba(249,115,22,0.45));
+  border-color: rgba(252,211,77,0.85);
+  box-shadow: 0 0 20px rgba(251,146,60,0.7), inset 0 1px 0 rgba(255,255,255,0.3);
+  transition-duration: 60ms;
+}
+
+/* ----- Hero : braises + sol rétro ----- */
+.fx-embers {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero .hero-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-floor {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 30%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  perspective: 320px;
+  perspective-origin: 50% 0;
+  opacity: 0.5;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 70%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 70%);
+}
+
+.hero-floor::before {
+  content: "";
+  position: absolute;
+  left: -60%;
+  right: -60%;
+  top: 0;
+  height: 260%;
+  transform-origin: 50% 0;
+  transform: rotateX(70deg);
+  background-image:
+    linear-gradient(rgba(251,146,60,0.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251,146,60,0.55) 1px, transparent 1px);
+  background-size: 56px 56px;
+  animation: fxFloor 1.8s linear infinite;
+}
+
+@keyframes fxFloor {
+  to { background-position: 0 56px, 0 0; }
+}
+
+/* ----- Texte accentué : reflet qui défile ----- */
+.about-accent {
+  background-image: linear-gradient(90deg, #fb923c 0%, #fcd34d 25%, #fb923c 50%, #fcd34d 75%, #fb923c 100%);
+  background-size: 200% auto;
+  animation: fxShimmer 6s linear infinite;
+}
+
+@keyframes fxShimmer {
+  to { background-position: -200% 0; }
+}
+
+/* ----- Chiffres clés ----- */
+.about-stats strong {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ----- Logo de l'en-tête : néon qui grésille ----- */
+.brand:hover {
+  opacity: 1;
+  text-shadow: 0 0 14px rgba(251,146,60,0.75);
+  animation: fxNeon 900ms steps(1) 1;
+}
+
+@keyframes fxNeon {
+  0% { opacity: 1; }
+  12% { opacity: 0.35; }
+  24% { opacity: 1; }
+  36% { opacity: 0.55; }
+  48%, 100% { opacity: 1; }
+}
+
+/* ----- Boutons aimantés ----- */
+.button {
+  transition: transform 200ms var(--ease), translate 260ms var(--ease), background-color 200ms ease,
+              border-color 200ms ease, box-shadow 200ms ease;
+}
+
+/* ----- Étincelles au clic ----- */
+.fx-spark {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  margin: -2px 0 0 -2px;
+  pointer-events: none;
+  z-index: 400;
+  animation: fxSpark 520ms cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes fxSpark {
+  from { transform: translate(0, 0) scale(1); opacity: 1; }
+  to { transform: translate(var(--dx), var(--dy)) scale(0.4); opacity: 0; }
+}
+
+/* ----- Compétences : "+1 XP" ----- */
+.fx-xp {
+  position: fixed;
+  transform: translate(-50%, -100%);
+  font-family: "Press Start 2P", ui-monospace, monospace;
+  font-size: 10px;
+  color: #fcd34d;
+  text-shadow: 2px 2px 0 #1c1008, 0 0 10px rgba(251,146,60,0.8);
+  pointer-events: none;
+  z-index: 400;
+  animation: fxXp 950ms var(--ease) forwards;
+}
+
+@keyframes fxXp {
+  from { opacity: 0; transform: translate(-50%, -60%); }
+  20% { opacity: 1; }
+  to { opacity: 0; transform: translate(-50%, -280%); }
+}
+
+/* ----- Projets : "PROJECT SELECTED!" façon arcade ----- */
+.fp-arcade-label {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0.5rem 0.75rem;
+  font-family: "Press Start 2P", ui-monospace, monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  color: #1c1008;
+  background: #fcd34d;
+  box-shadow: 3px 3px 0 var(--accent);
+  opacity: 0;
+}
+
+.fp-section.in-view .fp-arcade-label {
+  animation: fxSelect 1.4s steps(1) 250ms both;
+}
+
+@keyframes fxSelect {
+  0% { opacity: 0; }
+  12% { opacity: 1; }
+  24% { opacity: 0; }
+  36% { opacity: 1; }
+  48% { opacity: 0; }
+  60%, 100% { opacity: 1; }
+}
+
+/* ----- Projets : la bulle de témoignage apparaît avec un petit rebond ----- */
+.fp-section.in-view .fp-quote-bubble {
+  transform-origin: 0 100%;
+  animation: fxBubblePop 650ms cubic-bezier(0.34, 1.5, 0.64, 1) 650ms backwards;
+}
+
+@keyframes fxBubblePop {
+  from { transform: scale(0.85); }
+  to { transform: none; }
+}
+
+/* ----- Contact : curseur de sélection "▶" ----- */
+.contact-tile-label::before {
+  content: "▶";
+  display: inline-block;
+  width: 0;
+  margin-right: 0;
+  overflow: hidden;
+  opacity: 0;
+  vertical-align: top;
+  transition: width 250ms var(--ease), margin 250ms var(--ease), opacity 200ms ease;
+}
+
+.contact-tile:hover .contact-tile-label::before,
+.contact-tile:focus-visible .contact-tile-label::before {
+  width: 1em;
+  margin-right: 0.35em;
+  opacity: 1;
+  animation: fxBlink 0.8s steps(1) infinite;
+}
+
+/* ----- Pied de page : indice du code secret ----- */
+.footer-konami {
+  margin: 0;
+  font-family: "Press Start 2P", ui-monospace, monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  color: var(--accent-soft);
+  opacity: 0.35;
+  transition: opacity 300ms ease, text-shadow 300ms ease;
+  cursor: default;
+}
+
+.footer-konami:hover {
+  opacity: 1;
+  text-shadow: 0 0 12px rgba(251,146,60,0.7);
+}
+
+/* =========================================================
+   Section "Stage bonus" de l'accueil
+   ========================================================= */
+.bonus-fullpage {
+  padding: 4rem 0;
+  background: radial-gradient(800px 600px at 78% 58%, rgba(251,146,60,0.07), transparent 70%);
+}
+
+.bonus-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.bonus-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: 2rem;
+}
+
+.bonus-hiscore {
+  font-family: "Press Start 2P", ui-monospace, monospace;
+  font-size: 0.62rem;
+  line-height: 1.8;
+  color: var(--accent-soft);
+}
+
+.bonus-hiscore strong {
+  color: #fff7eb;
+  font-weight: 400;
+}
+
+.bonus-controls {
+  margin: 1.25rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #f4dcc3;
+  opacity: 0.8;
+}
+
+.bonus-cabinet {
+  position: relative;
+  padding: 1rem 1rem 1.2rem;
+  border-radius: 1.5rem 1.5rem 1rem 1rem;
+  background: linear-gradient(180deg, #3a1b0a, #1c1008 65%);
+  border: 2px solid rgba(251,146,60,0.5);
+  box-shadow: 0 0 0 4px #1c1008, 0 0 50px rgba(251,146,60,0.22), var(--shadow-2);
+  font-family: "Press Start 2P", ui-monospace, monospace;
+  cursor: pointer;
+}
+
+.bonus-marquee {
+  margin-bottom: 0.85rem;
+  padding: 0.65rem;
+  border-radius: 0.7rem;
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: #1c1008;
+  background: linear-gradient(90deg, #f97316, #fcd34d, #f97316);
+  background-size: 200% auto;
+  animation: fxShimmer 4s linear infinite;
+}
+
+.bonus-screen {
+  position: relative;
+  aspect-ratio: 10 / 9;
+  overflow: hidden;
+  border-radius: 0.7rem;
+  border: 3px solid #0d0603;
+  background: linear-gradient(180deg, #0d0603 0%, #2b1307 62%, #1a0b04 62%, #331606 100%);
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+}
+
+.bonus-screen::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 62%;
+  width: 36%;
+  aspect-ratio: 2 / 1;
+  transform: translate(-50%, -100%);
+  border-radius: 999px 999px 0 0;
+  background: linear-gradient(180deg, #fcd34d, #fb923c 55%, #db2777);
+  -webkit-mask-image: repeating-linear-gradient(180deg, #000 0 7px, transparent 7px 9px);
+  mask-image: repeating-linear-gradient(180deg, #000 0 7px, transparent 7px 9px);
+  opacity: 0.9;
+}
+
+.bonus-screen::after {
+  content: "";
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  top: 62%;
+  height: 90%;
+  transform-origin: 50% 0;
+  transform: perspective(180px) rotateX(58deg);
+  background-image:
+    linear-gradient(rgba(251,146,60,0.6) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251,146,60,0.6) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: fxFloorSmall 1.4s linear infinite;
+}
+
+@keyframes fxFloorSmall {
+  to { background-position: 0 30px, 0 0; }
+}
+
+.bonus-hud {
+  position: absolute;
+  z-index: 3;
+  top: 0.6rem;
+  left: 0.7rem;
+  right: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.45rem;
+  color: var(--accent-soft);
+}
+
+.bonus-drop {
+  position: absolute;
+  z-index: 2;
+  top: -14%;
+  left: var(--x);
+  width: 2.1rem;
+  height: 2.1rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.4rem;
+  font-size: 0.45rem;
+  color: #1c1008;
+  background: var(--c);
+  box-shadow: 0 0 14px var(--c);
+  animation: fxDrop var(--s, 4s) linear var(--d, 0s) infinite;
+}
+
+@keyframes fxDrop {
+  from { top: -14%; transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+  to { top: 100%; transform: rotate(-8deg); }
+}
+
+.bonus-paddle {
+  position: absolute;
+  z-index: 2;
+  bottom: 9%;
+  left: 50%;
+  width: 24%;
+  height: 4%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #f97316, #fcd34d);
+  box-shadow: 0 0 16px #fb923c;
+  animation: fxPaddle 3.6s ease-in-out infinite;
+}
+
+@keyframes fxPaddle {
+  0%, 100% { transform: translateX(-120%); }
+  50% { transform: translateX(20%); }
+}
+
+.bonus-insert {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  top: 38%;
+  text-align: center;
+  font-size: 0.7rem;
+  color: #fcd34d;
+  text-shadow: 2px 2px 0 #1c1008;
+  animation: fxBlink 1.1s steps(1) infinite;
+}
+
+.bonus-panel {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1.4rem;
+  margin-top: 1rem;
+}
+
+.bonus-stick {
+  position: relative;
+  width: 1.6rem;
+  height: 2.4rem;
+}
+
+.bonus-stick::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0.4rem;
+  width: 0.35rem;
+  height: 1.6rem;
+  margin-left: -0.175rem;
+  border-radius: 999px;
+  background: #4a2a12;
+  transform-origin: 50% 100%;
+  animation: fxStick 2.4s ease-in-out infinite;
+}
+
+.bonus-stick::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 1.6rem;
+  height: 0.6rem;
+  margin-left: -0.8rem;
+  border-radius: 50%;
+  background: #0d0603;
+}
+
+@keyframes fxStick {
+  0%, 100% { transform: rotate(-18deg); box-shadow: 0 -0.9rem 0 0.35rem #ef4444; }
+  50% { transform: rotate(18deg); box-shadow: 0 -0.9rem 0 0.35rem #ef4444; }
+}
+
+.bonus-btn {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fcd34d, #f97316 70%);
+  box-shadow: 0 4px 0 #7c2d12;
+}
+
+.bonus-btn + .bonus-btn {
+  background: radial-gradient(circle at 35% 30%, #fca5a5, #ef4444 70%);
+  box-shadow: 0 4px 0 #7f1d1d;
+}
+
+@media (max-width: 900px) {
+  .bonus-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .bonus-cabinet {
+    width: min(100%, 380px);
+    margin: 0 auto;
+  }
+}
+
+/* =========================================================
+   Bouton flottant "JOUER"
+   ========================================================= */
+.arcade-fab {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem 0.95rem 0.6rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(251,146,60,0.45);
+  background: rgba(28,16,8,0.9);
+  color: #fcd34d;
+  box-shadow: var(--shadow-2);
+  backdrop-filter: blur(10px);
+  animation: fxFabIn 700ms var(--ease) 1s backwards, fxFabPulse 2.8s ease-in-out 2s infinite;
+  transition: transform 200ms var(--ease), translate 260ms var(--ease), border-color 200ms ease, opacity 200ms ease;
+}
+
+.arcade-fab:hover {
+  transform: translateY(-3px);
+  border-color: #fcd34d;
+}
+
+.arcade-fab:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: 3px;
+}
+
+.arcade-fab-icon {
+  display: inline-block;
+  font-size: 1.2rem;
+  animation: fxWiggle 3.2s ease-in-out infinite;
+}
+
+.arcade-fab-text {
+  font-family: "Press Start 2P", ui-monospace, monospace;
+  font-size: 0.6rem;
+}
+
+@keyframes fxFabIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.8); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes fxFabPulse {
+  0%, 100% { box-shadow: var(--shadow-2), 0 0 0 0 rgba(251,146,60,0.45); }
+  50% { box-shadow: var(--shadow-2), 0 0 0 10px rgba(251,146,60,0); }
+}
+
+@keyframes fxWiggle {
+  0%, 80%, 100% { transform: rotate(0); }
+  85% { transform: rotate(-14deg); }
+  90% { transform: rotate(12deg); }
+  95% { transform: rotate(-6deg); }
+}
+
+@media (max-width: 640px) {
+  .arcade-fab-text {
+    display: none;
+  }
+
+  .arcade-fab {
+    padding: 0.6rem;
+  }
+}
+
+/* =========================================================
+   Borne d'arcade (fenêtre du mini-jeu)
+   ========================================================= */
+html.arcade-open,
+html.arcade-open body {
+  overflow: hidden;
+}
+
+html.arcade-open .arcade-fab {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.arcade {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.arcade[hidden] {
+  display: none;
+}
+
+.arcade-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8,4,2,0.8);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.arcade.is-open .arcade-backdrop {
+  opacity: 1;
+}
+
+.arcade-cabinet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 460px);
+  max-height: 100%;
+  padding: 0.9rem 0.9rem 1rem;
+  border-radius: 1.4rem 1.4rem 1rem 1rem;
+  background: linear-gradient(180deg, #3a1b0a, #1c1008 60%);
+  border: 2px solid rgba(251,146,60,0.55);
+  box-shadow: 0 0 0 4px #1c1008, 0 0 44px rgba(251,146,60,0.35), 0 30px 80px rgba(0,0,0,0.6);
+  font-family: "Press Start 2P", ui-monospace, monospace;
+  opacity: 0;
+  transform: translateY(30px) scale(0.94);
+  transition: transform 380ms var(--ease), opacity 250ms ease;
+}
+
+.arcade.is-open .arcade-cabinet {
+  opacity: 1;
+  transform: none;
+}
+
+.arcade-marquee {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 0.55rem 0.5rem 0.8rem;
+  border-radius: 0.7rem;
+  color: #1c1008;
+  background: linear-gradient(90deg, #f97316, #fcd34d, #f97316);
+  background-size: 200% auto;
+  animation: fxShimmer 4s linear infinite;
+}
+
+.arcade-marquee-text {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+}
+
+.arcade-tools {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.arcade-tool {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border-radius: 0.5rem;
+  border: 2px solid #1c1008;
+  background: rgba(28,16,8,0.12);
+  color: #1c1008;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.arcade-tool:hover {
+  background: rgba(28,16,8,0.28);
+}
+
+.arcade-screen {
+  position: relative;
+  width: min(100%, calc((100vh - 15rem) * 0.75));
+  width: min(100%, calc((100dvh - 15rem) * 0.75));
+  margin: 0 auto;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 0.8rem;
+  border: 3px solid #0d0603;
+  background: #0d0603;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.8), 0 0 0 2px rgba(251,146,60,0.4);
+}
+
+.arcade-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  outline: none;
+}
+
+.arcade-canvas:focus-visible {
+  outline: 2px solid #fcd34d;
+  outline-offset: -5px;
+}
+
+.arcade-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.95rem;
+  padding: 1.2rem;
+  text-align: center;
+  color: #fff7eb;
+  background: rgba(13,6,3,0.7);
+}
+
+.arcade-overlay[hidden] {
+  display: none;
+}
+
+.arcade-blink {
+  margin: 0;
+  font-size: 0.7rem;
+  color: #fcd34d;
+  animation: fxBlink 1s steps(1) infinite;
+}
+
+.arcade-h {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.35;
+  color: var(--accent-soft);
+  text-shadow: 3px 3px 0 #1c1008, 0 0 18px rgba(251,146,60,0.6);
+}
+
+.arcade-h--red {
+  color: #ef4444;
+  text-shadow: 3px 3px 0 #1c1008, 0 0 18px rgba(239,68,68,0.6);
+}
+
+.arcade-konami {
+  margin: 0;
+  font-size: 0.6rem;
+  color: #4ade80;
+  animation: fxBlink 0.6s steps(1) infinite;
+}
+
+.arcade-legend {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.82rem;
+  color: #f4dcc3;
+}
+
+.arcade-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.arcade-chip {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.4rem;
+  height: 1.6rem;
+  padding: 0 0.3rem;
+  border-radius: 0.35rem;
+  font-family: "Press Start 2P", ui-monospace, monospace;
+  font-size: 0.5rem;
+  color: #1c1008;
+  background: #facc15;
+}
+
+.arcade-chip--bug {
+  color: #fff;
+  background: #ef4444;
+}
+
+.arcade-chip--heart {
+  font-size: 0.75rem;
+  color: #fff;
+  background: #f472b6;
+}
+
+.arcade-small {
+  margin: 0;
+  font-size: 0.55rem;
+  color: var(--accent-soft);
+}
+
+.arcade-small span {
+  color: #fff7eb;
+}
+
+.arcade-cta {
+  display: inline-block;
+  padding: 0.85rem 1.1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #1c1008;
+  font-family: inherit;
+  font-size: 0.68rem;
+  color: #1c1008;
+  background: #fcd34d;
+  box-shadow: 4px 4px 0 var(--accent);
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.arcade-cta:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--accent);
+  text-decoration: none;
+}
+
+.arcade-cta:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--accent);
+}
+
+.arcade-cta--alt {
+  background: var(--accent-soft);
+  box-shadow: 4px 4px 0 #fcd34d;
+}
+
+.arcade-cta--alt:hover {
+  box-shadow: 6px 6px 0 #fcd34d;
+}
+
+.arcade-cta:focus-visible,
+.arcade-tool:focus-visible,
+.arcade-pad-btn:focus-visible {
+  outline: 2px solid #fff7eb;
+  outline-offset: 3px;
+}
+
+.arcade-score {
+  margin: 0;
+  font-size: 0.65rem;
+  color: var(--accent-soft);
+}
+
+.arcade-score strong {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #fff7eb;
+}
+
+.arcade-newhi {
+  margin: 0;
+  font-size: 0.62rem;
+  color: #4ade80;
+  animation: fxBlink 0.5s steps(1) infinite;
+}
+
+.arcade-msg {
+  max-width: 26ch;
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #fde4c8;
+}
+
+.arcade-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+}
+
+.arcade-pad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 0.85rem;
+}
+
+.arcade-pad-btn {
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid #1c1008;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #1c1008;
+  background: radial-gradient(circle at 35% 30%, #fcd34d, #f97316 70%);
+  box-shadow: 0 4px 0 #7c2d12;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.arcade-pad-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #7c2d12;
+}
+
+.arcade-pad-btn--mid {
+  width: auto;
+  height: 2.4rem;
+  padding: 0 1rem;
+  border-radius: 999px;
+  border-color: rgba(251,146,60,0.6);
+  font-size: 0.55rem;
+  color: #fcd34d;
+  background: #2a1408;
+  box-shadow: 0 3px 0 #0d0603;
+}
+
+.arcade-help {
+  margin: 0.75rem 0 0;
+  text-align: center;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.75rem;
+  color: #f4dcc3;
+  opacity: 0.75;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .arcade-pad {
+    display: none;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .arcade-help {
+    display: none;
+  }
+}
+
+/* =========================================================
+   Moins d'animations si la personne le demande
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .site-content,
+  .hero-floor::before,
+  .about-accent,
+  .bonus-marquee,
+  .bonus-screen::after,
+  .bonus-drop,
+  .bonus-paddle,
+  .bonus-insert,
+  .bonus-stick::before,
+  .arcade-marquee,
+  .arcade-fab,
+  .arcade-fab-icon,
+  .fx-caret,
+  .arcade-blink,
+  .arcade-konami,
+  .arcade-newhi,
+  .fp-section.in-view .fp-quote-bubble,
+  .fp-section.in-view .fp-arcade-label {
+    animation: none !important;
+  }
+
+  .fp-arcade-label {
+    opacity: 1;
+  }
+
+  .bonus-drop:nth-of-type(odd) {
+    top: 22%;
+  }
+
+  .bonus-drop:nth-of-type(even) {
+    top: 46%;
+  }
+
+  .bonus-paddle {
+    transform: translateX(-50%);
+  }
+
+  .arcade-cabinet,
+  .arcade-backdrop {
+    transition: none;
+  }
+}

@@ -2,7 +2,7 @@
   <section class="hero hero-home" id="accueil" data-dot="Accueil">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow">Étudiant en informatique</span>
+        <span class="eyebrow" data-typed="Étudiant en informatique|Développeur web & Java|Alternant dès janvier 2027">Étudiant en informatique</span>
         <h1>{{ .Site.Title }}</h1>
         <p class="hero-tag">{{ .Params.subtitle | default .Site.Params.subtitle }}</p>
         <p class="hero-text">{{ .Params.hero_text | default .Site.Params.hero_text }}</p>
@@ -39,6 +39,7 @@
         </div>
       </div>
     </div>
+    <div class="hero-floor" aria-hidden="true"></div>
   </section>
 
   {{ with .Params.recherche }}
@@ -74,6 +75,55 @@
   </section>
   {{ end }}
 
+  {{ with .Params.temoignages }}
+  <section id="temoignages" class="fp-section temoignages-fullpage" data-dot="Témoignages">
+    <div class="container temoignages-inner">
+      <span class="eyebrow fp-reveal">{{ .eyebrow }}</span>
+      <h2 class="about-title fp-reveal" style="--d: 90ms">{{ .title }} <span class="about-accent">{{ .title_accent }}</span></h2>
+      <p class="about-lead fp-reveal" style="--d: 180ms">{{ .lead }}</p>
+      <div class="temoignages-list">
+        {{ range $i, $item := .items }}
+        <article class="temoignage fp-reveal" style="--d: {{ add 260 (mul $i 140) }}ms">
+          <header class="temoignage-head">
+            {{ with $item.author }}
+            <span class="temoignage-avatar" aria-hidden="true">{{ $item.initials }}</span>
+            <div class="temoignage-author">
+              <strong>{{ . }}</strong>
+              <span>{{ $item.role }}</span>
+            </div>
+            {{ end }}
+            <span class="temoignage-company">{{ $item.company }}</span>
+          </header>
+          {{ with $item.quote }}
+          <blockquote class="temoignage-quote">
+            <p>{{ . }}</p>
+          </blockquote>
+          {{ end }}
+          {{ with $item.context }}
+          <p class="temoignage-context">{{ . }}</p>
+          {{ end }}
+          {{ with $item.points }}
+          <ul class="temoignage-points">
+            {{ range . }}<li>{{ . }}</li>{{ end }}
+          </ul>
+          {{ end }}
+          <a class="temoignage-project" href="{{ $item.link | relURL }}">
+            {{ with $item.image }}
+            <img src="{{ . | relURL }}" alt="Aperçu du projet {{ $item.project }}" loading="lazy">
+            {{ end }}
+            <span class="temoignage-project-body">
+              <strong>{{ $item.project }}</strong>
+              <span>{{ $item.project_text }}</span>
+            </span>
+            <span class="temoignage-project-arrow" aria-hidden="true">→</span>
+          </a>
+        </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
   {{ with .Params.about }}
   <section id="a-propos" class="fp-section about-fullpage" data-dot="À propos">
     <div class="container about-grid">
@@ -102,6 +152,41 @@
           <p>{{ $item.text }}</p>
         </article>
         {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with .Params.bonus }}
+  <section id="bonus" class="fp-section bonus-fullpage" data-dot="Stage bonus">
+    <div class="container bonus-grid">
+      <div class="bonus-copy">
+        <span class="eyebrow fp-reveal">{{ .eyebrow }}</span>
+        <h2 class="about-title fp-reveal" style="--d: 90ms">{{ .title }} <span class="about-accent">{{ .title_accent }}</span></h2>
+        <p class="about-lead fp-reveal" style="--d: 180ms">{{ .lead }}</p>
+        <div class="bonus-actions fp-reveal" style="--d: 270ms">
+          <button type="button" class="button button-primary" data-arcade-open>{{ .button }}</button>
+          <span class="bonus-hiscore">Ton record : <strong data-arcade-hiscore>000000</strong></span>
+        </div>
+        <p class="bonus-controls fp-reveal" style="--d: 360ms">{{ .controls }}</p>
+      </div>
+      <div class="bonus-cabinet fp-reveal" style="--d: 220ms" data-arcade-open aria-hidden="true">
+        <div class="bonus-marquee">MATTY ARCADE</div>
+        <div class="bonus-screen">
+          <span class="bonus-hud"><span>1UP 000000</span><span>HI-SCORE</span></span>
+          <span class="bonus-drop" style="--x: 12%; --c: #facc15; --s: 3.8s; --d: 0s">JS</span>
+          <span class="bonus-drop" style="--x: 64%; --c: #3b82f6; --s: 4.4s; --d: -1.6s">PY</span>
+          <span class="bonus-drop" style="--x: 38%; --c: #ef4444; --s: 3.4s; --d: -2.4s">BUG</span>
+          <span class="bonus-drop" style="--x: 80%; --c: #f97316; --s: 4s; --d: -0.8s">JAVA</span>
+          <span class="bonus-drop" style="--x: 24%; --c: #14b8a6; --s: 4.6s; --d: -3.2s">SQL</span>
+          <span class="bonus-paddle"></span>
+          <span class="bonus-insert">INSERT COIN</span>
+        </div>
+        <div class="bonus-panel">
+          <span class="bonus-stick"></span>
+          <span class="bonus-btn"></span>
+          <span class="bonus-btn"></span>
+        </div>
       </div>
     </div>
   </section>

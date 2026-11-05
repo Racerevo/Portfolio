@@ -19,6 +19,7 @@
       <article class="fp-section fp-project fp-project--{{ $p.File.ContentBaseName }}" id="projet-{{ add $i 1 }}" data-dot="{{ $p.Title }}">
         <div class="container fp-grid">
         <div class="fp-content">
+          <p class="fp-arcade-label" aria-hidden="true">P{{ add $i 1 }} ▶ PROJECT SELECTED!</p>
           <p class="eyebrow fp-reveal">Projet {{ printf "%02d" (add $i 1) }} / {{ printf "%02d" $total }} — {{ $p.Date.Format "2006" }}</p>
           <h2 class="fp-title fp-reveal" style="--d: 90ms">{{ $p.Title }}</h2>
           {{ with $p.Params.tags }}
@@ -35,6 +36,20 @@
               <span class="fp-used">{{ delimit . " · " }}</span>
             {{ end }}
           </div>
+          {{ with $p.Params.testimonial }}
+            <figure class="fp-quote fp-reveal" style="--d: 450ms">
+              <blockquote class="fp-quote-bubble">
+                <p>{{ .quote }}</p>
+              </blockquote>
+              <figcaption class="fp-quote-author">
+                <span class="fp-quote-avatar" aria-hidden="true">{{ .initials }}</span>
+                <span class="fp-quote-who">
+                  <strong>{{ .author }}</strong>
+                  <span>{{ .role }}</span>
+                </span>
+              </figcaption>
+            </figure>
+          {{ end }}
         </div>
         {{ with $p.Params.image }}
           <div class="fp-media">

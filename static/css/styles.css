@@ -768,6 +768,95 @@ html:has(.projects-fullpage) {
   font-size: 0.9rem;
 }
 
+/* Témoignage d'un projet : bulle de dialogue en bas à gauche */
+.fp-quote {
+  max-width: 600px;
+  margin: 2.25rem 0 0;
+}
+
+.fp-quote-bubble {
+  position: relative;
+  margin: 0;
+  padding: 1.25rem 1.4rem 1.2rem 1.5rem;
+  border-radius: 1.25rem 1.25rem 1.25rem 0.4rem;
+  background: #33190b;
+  border: 1px solid rgba(251,146,60,0.55);
+  box-shadow: var(--shadow-2), 0 0 34px rgba(251,146,60,0.16);
+}
+
+.fp-quote-bubble::before {
+  content: "“";
+  position: absolute;
+  top: -1.1rem;
+  left: 1rem;
+  font-family: Georgia, serif;
+  font-size: 3.4rem;
+  line-height: 1;
+  color: var(--accent-soft);
+  text-shadow: 0 0 18px rgba(251,146,60,0.5);
+}
+
+.fp-quote-bubble::after {
+  content: "";
+  position: absolute;
+  left: 1.3rem;
+  bottom: -9px;
+  width: 16px;
+  height: 16px;
+  background: #33190b;
+  border-right: 1px solid rgba(251,146,60,0.55);
+  border-bottom: 1px solid rgba(251,146,60,0.55);
+  transform: rotate(45deg);
+}
+
+.fp-quote-bubble p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  font-style: italic;
+  color: #fde4c8;
+}
+
+.fp-quote-author {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1.1rem;
+  padding-left: 0.3rem;
+}
+
+.fp-quote-avatar {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fb923c, #fcd34d);
+  color: #1c1008;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.fp-quote-who {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.fp-quote-who strong {
+  color: #fff7eb;
+  font-size: 0.95rem;
+}
+
+.fp-quote-who span {
+  color: #f4dcc3;
+  opacity: 0.8;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
 /* Lien vers le projet suivant */
 .fp-next {
   position: absolute;
@@ -973,6 +1062,220 @@ html:has(.projects-fullpage) {
   }
 }
 
+/* ===== Section Témoignages plein écran (accueil) ===== */
+.temoignages-fullpage {
+  padding: 4rem 0;
+  background: radial-gradient(900px 700px at 86% 20%, rgba(251,146,60,0.05), transparent 70%);
+}
+
+.temoignages-inner .about-lead {
+  max-width: 640px;
+  margin: 0 0 2.5rem;
+}
+
+.temoignages-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.temoignage {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.75rem;
+  border-radius: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-1);
+}
+
+.temoignage-head {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.temoignage-avatar {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fb923c, #fcd34d);
+  color: #1c1008;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.temoignage-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.temoignage-author strong {
+  color: #fff7eb;
+  font-size: 1rem;
+}
+
+.temoignage-author span {
+  color: #f4dcc3;
+  opacity: 0.8;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.temoignage-company {
+  margin-left: auto;
+  flex-shrink: 0;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(251,146,60,0.35);
+  background: rgba(251,146,60,0.10);
+  color: #fcd9b8;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.temoignage-context {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #f4dcc3;
+}
+
+.temoignage-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.temoignage-points li {
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(251,146,60,0.3);
+  background: rgba(251,146,60,0.08);
+  font-size: 0.8rem;
+  color: #fcd9b8;
+}
+
+.temoignage-quote {
+  position: relative;
+  margin: 0;
+  padding-left: 1.1rem;
+  border-left: 3px solid #fb923c;
+}
+
+.temoignage-quote p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  font-style: italic;
+  color: #fde4c8;
+}
+
+.temoignage-quote p::before { content: "« "; }
+.temoignage-quote p::after { content: " »"; }
+
+.temoignage-project {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+  padding: 0.75rem;
+  border-radius: 1rem;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.03);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 250ms ease, background-color 250ms ease;
+}
+
+.temoignage-project:hover {
+  border-color: var(--line-hover);
+  background: rgba(251,146,60,0.06);
+}
+
+.temoignage-project img {
+  flex-shrink: 0;
+  width: 96px;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 0.6rem;
+}
+
+.temoignage-project-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.temoignage-project-body strong {
+  color: #fff7eb;
+  font-size: 0.95rem;
+}
+
+.temoignage-project-body span {
+  color: #f4dcc3;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.temoignage-project-arrow {
+  margin-left: auto;
+  color: #fb923c;
+  font-size: 1.2rem;
+  transition: transform 250ms var(--ease);
+}
+
+.temoignage-project:hover .temoignage-project-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 900px) {
+  .temoignages-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .temoignage {
+    padding: 1.25rem;
+  }
+
+  .temoignage-head {
+    flex-wrap: wrap;
+  }
+
+  .temoignage-author {
+    flex: 1 1 calc(100% - 4rem);
+  }
+
+  .temoignage-company {
+    margin-left: 0;
+  }
+
+  .temoignage-project img {
+    width: 72px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .temoignage-project:hover .temoignage-project-arrow {
+    transform: none;
+  }
+}
+
 /* ===== Section Ce que je recherche plein écran (accueil) ===== */
 .search-fullpage {
   padding: 4rem 0;
@@ -1119,13 +1422,6 @@ html:has(.projects-fullpage) {
   margin-top: 8rem;
 }
 
-/* HoraireCarrefour : image plus petite et plus basse */
-.fp-project--horaire-carrefour .fp-media {
-  width: 260px;
-  justify-self: center;
-  margin-top: 9rem;
-}
-
 /* Pokeia & VelHome : image en fond, texte par-dessus */
 .fp-project--pokeia .fp-grid,
 .fp-project--velhome .fp-grid {
@@ -1178,6 +1474,12 @@ html:has(.projects-fullpage) {
   .fp-project--lightoff-jeu .fp-grid {
     grid-template-columns: minmax(0, 1fr) minmax(340px, 640px);
   }
+
+  /* HoraireCarrefour : capture large, on lui laisse plus de place */
+  .fp-project--horaire-carrefour .fp-grid {
+    grid-template-columns: minmax(0, 0.85fr) minmax(380px, 1.15fr);
+    gap: 3rem;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1191,8 +1493,7 @@ html:has(.projects-fullpage) {
     max-width: 420px;
   }
 
-  .fp-project--gestion-cabinet-medical .fp-media,
-  .fp-project--horaire-carrefour .fp-media {
+  .fp-project--gestion-cabinet-medical .fp-media {
     margin-top: 0;
   }
 

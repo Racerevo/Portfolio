@@ -2,9 +2,14 @@
 title: "HoraireCarrefour"
 date: 2026-07-01
 tags: ["PWA", "Web App", "Supabase", "JavaScript"]
-image: "images/Carrefour.png"
+image: "images/HoraireCarrefour.jpg"
 git_url: "https://github.com/Racerevo/horaire-carrefour"
 used: ["JavaScript", "Supabase", "Service Worker"]
+testimonial:
+  initials: "👥"
+  author: "Mes collègues"
+  role: "Utilisateurs de l'appli au quotidien, Carrefour"
+  quote: "Une app vraiment bien faite, d'une rapidité et d'une qualité impressionnantes. C'est très pratique pour regarder rapidement notre emploi du temps, mais aussi pour en discuter directement sur l'appli."
 ---
 
 Application web progressive de gestion des plannings pour une équipe Carrefour, avec synchronisation en temps réel et chat intégré.
