@@ -2367,6 +2367,26 @@ a:focus-visible,
   min-height: 0;
 }
 
+/* Bloc "Email" en bas de page : le formulaire se déplie juste en dessous */
+.contact-mail {
+  margin-top: 1.25rem;
+}
+
+.contact-mail .contact-tile--form {
+  width: 100%;
+}
+
+.contact-mail .contact-form-wrap {
+  transition: grid-template-rows 420ms var(--ease),
+              opacity 280ms ease,
+              margin-top 420ms var(--ease);
+}
+
+.contact-mail .contact-form-wrap.is-open {
+  margin-top: 1.25rem;
+  margin-bottom: 0;
+}
+
 .contact-form {
   padding: 1.9rem;
   border-radius: 1.35rem;

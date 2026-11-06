@@ -14,13 +14,8 @@ channels:
     label: "Email"
     value: "matty.fourmestraux@gmail.com"
     action: "Écrire un message"
-    # form: true -> la tuile ouvre le formulaire ci-dessous au lieu d'un lien
+    # form: true -> la tuile ouvre le formulaire en bas de page au lieu d'un lien
     form: true
-  - icon: "📞"
-    label: "Téléphone"
-    value: "06 74 73 22 08"
-    href: "tel:+33674732208"
-    action: "Appeler"
   - icon: "💼"
     label: "LinkedIn"
     value: "Matty Fourmestraux"

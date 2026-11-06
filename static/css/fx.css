@@ -534,6 +534,11 @@ body.is-leaving .site-footer {
 /* =========================================================
    Bouton flottant "JOUER"
    ========================================================= */
+/* Place libre sous le pied de page pour que le bouton ne cache pas l'email */
+.site-footer {
+  padding-bottom: 5rem;
+}
+
 .arcade-fab {
   position: fixed;
   right: 1.1rem;
