@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Une section plus haute que l'écran (fréquent sur téléphone) n'atteint
+  // jamais 40 % de visibilité : on regarde aussi la hauteur réellement affichée.
+  var visibilitySteps = [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4];
+  function isMostlyVisible(entry) {
+    return entry.isIntersecting &&
+      (entry.intersectionRatio >= 0.4 || entry.intersectionRect.height >= window.innerHeight * 0.35);
+  }
+
   // Navigation par points à droite : construite sur toute page
   // ayant au moins deux sections marquées d'un attribut data-dot.
   var dotSections = document.querySelectorAll("[data-dot]");
@@ -23,14 +31,14 @@ document.addEventListener("DOMContentLoaded", function () {
       var dotObserver = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
+            if (isMostlyVisible(entry)) {
               dots.forEach(function (dot) {
                 dot.classList.toggle("active", dot.getAttribute("href") === "#" + entry.target.id);
               });
             }
           });
         },
-        { threshold: 0.4 }
+        { threshold: visibilitySteps }
       );
       dotSections.forEach(function (s) { dotObserver.observe(s); });
     }
@@ -45,10 +53,10 @@ document.addEventListener("DOMContentLoaded", function () {
       var fpObserver = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (entry) {
-            entry.target.classList.toggle("in-view", entry.isIntersecting);
+            entry.target.classList.toggle("in-view", isMostlyVisible(entry));
           });
         },
-        { threshold: 0.4 }
+        { threshold: visibilitySteps }
       );
       fpSections.forEach(function (s) { fpObserver.observe(s); });
     }
